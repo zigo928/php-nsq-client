@@ -57,7 +57,7 @@ class Logger implements LoggerInterface
     private function log($level, $msg)
     {
         $s = $msg instanceof \Exception ? $msg->getMessage() : (string)$msg;
-        switch ($this->type)
+        switch (self::$type)
         {
         case 'php':
             error_log(strtoupper($level).' '.$s);
