@@ -8,10 +8,9 @@
 
 namespace Kdt\Iron\Queue\Adapter\Nsq;
 
+use Exception as SysException;
 use Kdt\Iron\Queue\Exception\InvalidConfigException;
 use Kdt\Iron\Queue\Foundation\Traits\SingleInstance;
-
-use Exception as SysException;
 
 class Config
 {
@@ -98,7 +97,7 @@ class Config
      */
     public function getGlobalSetting($key, $default = null)
     {
-        return $this->globalSetting[$key] ?: $default;
+        return isset($this->globalSetting[$key]) ? $this->globalSetting[$key] : $default;
     }
 
     public function setGlobalSetting($setting)
